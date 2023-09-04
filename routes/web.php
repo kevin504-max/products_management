@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\dashboard\ProductController;
+use App\Http\Controllers\dashboard\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,13 @@ Route::middleware(['auth'])->group(function () {
             Route::post('store', [ProductController::class, 'store'])->name('store');
             Route::put('update', [ProductController::class, 'update'])->name('update');
             Route::delete('destroy', [ProductController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::name('users.')->prefix('users')->group(function () {
+            Route::get('index', [UserController::class, 'index'])->name('index');
+            Route::post('store', [UserController::class, 'store'])->name('store');
+            Route::put('update', [UserController::class, 'update'])->name('update');
+            Route::delete('destroy', [UserController::class, 'destroy'])->name('destroy');
         });
     });
 });
