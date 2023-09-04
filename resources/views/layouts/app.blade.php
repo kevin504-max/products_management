@@ -120,7 +120,23 @@
 
         <!-- Scripts -->
         @livewireScripts
+        <script src="{{ asset('frontend/js/jquery-3.6.4.min.js') }}"></script>
         <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
         <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="{{ asset('frontend/js/jquery.mask.min.js') }}"></script>
+
+        @if (session("status"))
+            <script>
+                Swal.fire({
+                    title: "{{ session("message") }}",
+                    icon: "{{ session("status") }}",
+                    showConfirmButton: false,
+                    timer: 2500
+                });
+            </script>
+        @endif
+
+        @yield('scripts')
     </body>
 </html>

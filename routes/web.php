@@ -27,6 +27,9 @@ Route::middleware(['auth'])->group(function () {
 
         Route::name('products.')->prefix('products')->group(function () {
             Route::get('index', [ProductController::class, 'index'])->name('index');
+            Route::post('store', [ProductController::class, 'store'])->name('store');
+            Route::put('update', [ProductController::class, 'update'])->name('update');
+            Route::delete('destroy', [ProductController::class, 'destroy'])->name('destroy');
         });
     });
 });
