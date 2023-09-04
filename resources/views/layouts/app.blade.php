@@ -55,6 +55,11 @@
                                     </li>
                                 @endif
                             @else
+                                <li class="nav-item">
+                                    <a href="{{ route('cart.index') }}" class="nav-link">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </a>
+                                </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->name }}</a>
                                     <ul class="dropdown-menu">

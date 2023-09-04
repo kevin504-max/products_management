@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\dashboard\ProductController;
 use App\Http\Controllers\dashboard\UserController;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,9 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', function () {
-        return view('dashboard');
+        $products = \App\Models\Product::all();
+
+        return view('dashboard', compact('products'));
     })->name('dashboard');
 
     Route::name('dashboard.')->prefix('dashboard')->group(function () {
@@ -39,6 +42,12 @@ Route::middleware(['auth'])->group(function () {
             Route::put('update', [UserController::class, 'update'])->name('update');
             Route::delete('destroy', [UserController::class, 'destroy'])->name('destroy');
         });
+    });
+
+    Route::name('cart.')->prefix('cart')->group(function () {
+        Route::get('index', [CartController::class, 'index'])->name('index');
+        Route::post('addProduct', [CartController::class, 'addProduct'])->name('addProduct');
+        Route::post('removeProduct', [CartController::class, 'removeProduct'])->name('removeProduct');
     });
 });
 
