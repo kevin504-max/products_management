@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\dashboard\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,12 +18,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
+Route::middleware(['auth'])->group(function () {
+    Route::get('dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::name('dashboard.')->prefix('dashboard')->group(function () {
+
+        Route::name('products.')->prefix('products')->group(function () {
+            Route::get('index', [ProductController::class, 'index'])->name('index');
+        });
+    });
 });
+
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified',
+// ])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return view('dashboard');
+//     })->name('dashboard');
+// });
