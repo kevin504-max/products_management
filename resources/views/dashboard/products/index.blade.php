@@ -12,7 +12,7 @@
         </div>
 
         <div class="card-body">
-            <table class="table table-hover">
+            <table id="productsTable" class="table table-hover">
                 <thead>
                     <tr>
                         <th class="text-center">ID</th>
@@ -74,3 +74,4 @@
 @section('scripts')
 @include('dashboard.products._scripts')
 @endsection
+

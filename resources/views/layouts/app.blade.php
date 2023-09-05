@@ -17,6 +17,9 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+        {{-- Datatables sytle --}}
+        <link href="{{ asset('frontend/js/datatables-1.10.13/datatables.conectados.min.css') }}" rel="stylesheet">
+
         <!-- Styles -->
         @livewireStyles
         <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap5.css') }}">
@@ -131,6 +134,13 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="{{ asset('frontend/js/jquery.mask.min.js') }}"></script>
 
+        {{-- Datatables plugin --}}
+        <script src="{{ asset('frontend/js/datatables-1.10.13/datatables.min.js') }}"></script>
+        <script src="{{ asset('frontend/js/datatables-1.10.13/dataTables.bootstrap4.min.js') }}"></script>
+        <script src="{{ asset('frontend/js/datatables-1.10.13/dataRender/datetime.js') }}"></script>
+        <script src="{{ asset('frontend/js/datatables-1.10.13/sorting/datetime-moment.js') }}"></script>
+        <script src="{{ asset('frontend/js/datatables-1.10.13/sorting/date-uk.js') }}"></script>
+
         @if (session("status"))
             <script>
                 Swal.fire({
@@ -141,6 +151,17 @@
                 });
             </script>
         @endif
+
+        <script>
+            //DataTables init
+            $.extend( true, $.fn.dataTable.defaults, {
+                "language": {
+                    "sEmptyTable": "<img width = 200px src='{!! asset("assets/logging-off.svg") !!}'><br><span style='font-size: 1.2em;'>Nenhum registro encontrado</span>",
+                    "sZeroRecords": "<img width = 200px src='{!! asset("assets/logging-off.svg") !!}'><br><span style='font-size: 1.2em;'>Nenhum registro encontrado</span>",
+                    "url": "{!! asset('frontend/js/datatables-1.10.13/Portuguese-Brasil.json') !!}",
+                },
+            });
+        </script>
 
         @yield('scripts')
     </body>

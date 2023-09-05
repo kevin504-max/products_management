@@ -12,4 +12,34 @@
     $("#modalDeleteUser").on("show.bs.modal", function (event) {
         $(this).find("#id").val($(event.relatedTarget).data("id"));
     });
+
+    const table = $('#usersTable').DataTable({
+        responsive: true,
+        lengthChange: true,
+        length: 20,
+        dom: '<"html5buttons"B>lTfgitp',
+        order: [
+            [0, "desc"]
+        ],
+        buttons: [
+            {
+                extend: 'excel',
+                title: 'Histórico de Compras'
+            },
+            {
+                extend: 'pdf',
+                title: 'Histórico de Compras'
+            },
+            {
+                extend: 'print',
+                customize: function(win) {
+                    $(win.document.body).addClass('white-bg');
+                    $(win.document.body).css('font-size', '10px');
+                    $(win.document.body).find('table')
+                    .addClass('compact')
+                    .css('font-size', 'inherit');
+                }
+            }
+        ]
+    })
 </script>

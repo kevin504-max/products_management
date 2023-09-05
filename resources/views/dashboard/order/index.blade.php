@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="card-body">
-                    <table class="table hover table-responsive">
+                    <table id="newOrdersTable" class="table table-hover">
                         <thead>
                             <tr>
                                 <th class="text-center align-middle">Data do Pedido</th>
@@ -46,4 +46,38 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    const table = $('#newOrdersTable').DataTable({
+        responsive: true,
+        lengthChange: true,
+        length: 20,
+        dom: '<"html5buttons"B>lTfgitp',
+        order: [
+            [0, "desc"]
+        ],
+        buttons: [
+            {
+                extend: 'excel',
+                title: 'Histórico de Compras'
+            },
+            {
+                extend: 'pdf',
+                title: 'Histórico de Compras'
+            },
+            {
+                extend: 'print',
+                customize: function(win) {
+                    $(win.document.body).addClass('white-bg');
+                    $(win.document.body).css('font-size', '10px');
+                    $(win.document.body).find('table')
+                    .addClass('compact')
+                    .css('font-size', 'inherit');
+                }
+            }
+        ]
+    })
+</script>
 @endsection

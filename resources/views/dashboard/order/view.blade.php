@@ -32,7 +32,7 @@
                         </div>
                         <div class="col-md-6">
                             <h4>Detalhes do Pedido</h4>
-                            <table class="table table-striped">
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th class="text-center align-middle">Produto</th>
