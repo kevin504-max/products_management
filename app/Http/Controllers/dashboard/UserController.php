@@ -102,4 +102,19 @@ class UserController extends Controller
             ]);
         }
     }
+
+    public function view($id)
+    {
+        try {
+            $user = User::find($id);
+
+            return view('dashboard.users.view', compact('user'));
+        } catch (\Throwable $th) {
+            report ($th);
+            return redirect()->back()->with([
+                'status' => 'error',
+                'message' => 'Algo deu errado! tente novamente.'
+            ]);
+        }
+    }
 }

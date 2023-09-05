@@ -13,7 +13,11 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6 order-details">
-                            <h4>Detalhes da Compra</h4>
+                            <h4>Detalhes do Usuário
+                                <a href="{{ route('dashboard.users.view', ['id' => $order->user->id]) }}" class="btn btn-outline-secondary float-end">
+                                    Visualizar Cliente
+                                </a>
+                            </h4>
 
                             <label for="user">Cliente</label>
                             <div class="border mb-3">{{ $order->user->name }}</div>

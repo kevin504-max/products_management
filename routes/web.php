@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('store', [UserController::class, 'store'])->name('store');
             Route::put('update', [UserController::class, 'update'])->name('update');
             Route::delete('destroy', [UserController::class, 'destroy'])->name('destroy');
+            Route::get('view-user/{id}', [UserController::class, 'view'])->name('view');
         });
 
         Route::name('orders.')->prefix('orders')->group(function () {

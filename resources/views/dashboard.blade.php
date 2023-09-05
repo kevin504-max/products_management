@@ -37,7 +37,7 @@
 
                             </div>
 
-                            <button class="btn btn-primary btn-block p-1 m-3 addCartBtn" type="button">Adicionar ao carrinho</button>
+                            <button class="btn btn-primary btn-md p-1 m-3 addCartBtn" type="button">Adicionar ao carrinho</button>
                         </div>
                     </form>
 

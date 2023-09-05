@@ -30,6 +30,13 @@
                             <td class="text-center align-middle">{{ $user->email }}</td>
                             <td class="text-center align-middle">{{ $user->cpf }}</td>
                             <td class="text-center align-middle">
+                                <a
+                                    href="{{ route('dashboard.users.view', ['id' => $user->id]) }}"
+                                    class="btn btn-secondary"
+                                >
+                                    <i class="fa fa-eye"></i>
+                                </a>
+
                                 <button
                                     class="btn btn-primary"
                                     type="button"
