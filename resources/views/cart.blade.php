@@ -22,7 +22,25 @@
                             <button class="btn btn-danger delete-cart-item" type="button"><i class="fa fa-trash"></i> Remover</button>
                         </div>
                     </div>
+
+                    @php
+                        $total += (($item->product->price) * $item->items);
+                    @endphp
                 @endforeach
+
+                <hr>
+
+                <div class="card-footer">
+                    <h6>Total: ${{ number_format($total, 2, ',', '.') }}
+                        <a href="{{ url('checkout') }}" type="button" class="btn btn-outline-success float-end">Proceed to Checkout</a>
+                    </h6>
+                </div>
+            </div>
+        @else
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <img src="{{ asset('assets/logging-off.svg') }}" alt="Seu carrinho está vazio..." class="w-50 mb-2">
+                <h4>Seu carrinho está vazio...</h4>
+                <a href="{{ url('/dashboard') }}" type="button" class="btn btn-outline-primary"><i class="fa fa-shopping-cart fa-2x"></i> Continuar Comprando</a>
             </div>
         @endif
     </div>

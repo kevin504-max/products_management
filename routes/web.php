@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\dashboard\ProductController;
 use App\Http\Controllers\dashboard\UserController;
 use Illuminate\Support\Facades\Route;
@@ -49,6 +50,9 @@ Route::middleware(['auth'])->group(function () {
         Route::post('addProduct', [CartController::class, 'addProduct'])->name('addProduct');
         Route::post('removeProduct', [CartController::class, 'removeProduct'])->name('removeProduct');
     });
+
+    Route::get('checkout', [CheckoutController::class, 'index']);
+    Route::post('place-order', [CheckoutController::class, 'placeOrder']);
 });
 
 // Route::middleware([
