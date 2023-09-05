@@ -56,7 +56,7 @@
                                 @endif
                             @else
                                 <li class="nav-item">
-                                    <a href="{{ route('cart.index') }}" class="nav-link">
+                                    <a href="{{ route('cart.index') }}" class="nav-link mr-3">
                                         <i class="fa fa-shopping-cart"></i>
                                     </a>
                                 </li>
@@ -106,7 +106,7 @@
                                     <a href="{{ route('dashboard.products.index') }}" class="nav-link text-secondary"><i class="fa fa-box"></i> Produtos</a>
                                 </li>
                                 <li class="nav-item mb-2 ">
-                                    <a href="#" class="nav-link text-secondary"><i class="fa fa-dollar"></i> Compras</a>
+                                    <a href="{{ route('dashboard.orders.index') }}" class="nav-link text-secondary"><i class="fa fa-dollar"></i> Compras</a>
                                 </li>
                             </ul>
                         </div>
